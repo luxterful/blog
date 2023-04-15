@@ -6,9 +6,9 @@ tags:
 - vue
 - mui
 external: true  
-canonical: https://blog.mayflower.de/asdfasdfasfdasdf
+canonical: https://blog.mayflower.de/
 ---  
- 
+
 Front-End-CSS-Frameworks sind heute unverzichtbar für die Entwicklung moderner Webanwendungen. Sie helfen Entwicklern, ansprechende Designs zu erstellen. Drei der beliebtesten Frameworks sind Tailwind, Bootstrap und MUI. 
 
 Bootstrap, ursprünglich als "Twitter Bootstrap" bekannt, ist ein weit verbreitetes CSS Framework, das von Twitter entwickelt wurde. Es wurde erstmals 2011 veröffentlicht und ist somit das Älteste der drei Frameworks. 
@@ -17,7 +17,7 @@ MUI (Material-UI) basiert auf der von Google entwickelten Material Design-Sprach
 
 Tailwind hat sich nach anfänglicher Skepsis von vielen Entwicklern in ein mittlerweile sehr beliebtes Framework entwickelt. Im Gegensatz zu Bootstrap und MUI hat Tailwind keine spezifische Designsprache. Es besitzt auch keine Klassen, die vordefinierte Komponenten beschreiben. Stattdessen bietet Tailwind eine Reihe von sogenannten "Utility-Klassen".
 
-## Bootstrap 
+## Bootstrap
 
 Bootstrap ist bekannt für sein sauberes Erscheinungsbild, das auf einer Kombination von Gestaltungsprinzipien, vorgefertigten UI-Komponenten und einem responsiven Grid-System basiert. Aufgrund der weiten Verbreitung und der Verwendung von vorgefertigten Komponenten können Bootstrap-Websites ähnlich aussehen und wenig Raum für individuelle Designs bieten.
 

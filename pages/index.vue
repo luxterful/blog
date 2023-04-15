@@ -1,25 +1,13 @@
 <template>
   <div>
     <Header :showHomeButton="false"> LUXTER BLOG </Header>
-    <div
-      class="mb-2 flex space-x-2 rounded-md border-black p-2 shadow-md dark:border-white"
-    >
-      <input
-        class="w-full rounded-md bg-transparent outline-none dark:text-white"
-        placeholder="Suche..."
-        v-model="queryString"
-        @keyup.enter="refreshData"
-      />
-      <button class="dark:text-white" @click="refreshData">
-        <IconMagnifier />
-      </button>
-    </div>
-    <div class="flex flex-wrap">
+    <SearchInput class="mb-2" v-model="queryString" />
+    <div class="flex flex-wrap" v-if="data">
       <NuxtLink
         class="mb-4 w-full p-2 sm:w-1/2"
         v-for="(article, idx) in data.list"
         :key="idx"
-        :to="`/blog/${article._path?.split('/').pop()}`"
+        :to="article.external ? article.canonical : article._path"
       >
         <div
           class="border-l border-black pb-2 pl-3 text-black dark:border-white dark:text-white hover:dark:bg-stone-900"
@@ -44,65 +32,53 @@
           </div>
         </div>
       </NuxtLink>
-    </div>
-    <div
-      v-if="data.next.length !== 0"
-      class="w-full cursor-pointer rounded-md p-3 text-center shadow-sm hover:shadow-md dark:bg-stone-700 dark:text-white"
-      @click="loadMore"
-    >
-      Load more
+      <div
+        v-if="data.next.length !== 0"
+        class="w-full cursor-pointer rounded-md p-3 text-center shadow-sm hover:shadow-md dark:bg-stone-700 dark:text-white"
+        @click="page++"
+      >
+        Load more
+      </div>
     </div>
   </div>
 </template>
 
-<script setup>
-const queryString = ref("");
+<script setup lang="ts">
+import { ParsedContent } from "@nuxt/content/dist/runtime/types";
+import { getBlogPosts } from "~/queries";
 
-async function loadRecipes(limit, skip) {
-  let query = queryContent(`blog`)
-    .only([
-      "title",
-      "image",
-      "time",
-      "_path",
-      "tags",
-      "date",
-      "reading",
-      "dateText",
-      "external",
-    ])
-    .limit(limit);
+const queryString = useState("home-query-string", () => "");
 
-  if (queryString.value) {
-    query = query.where({
-      title_lowercase: { $contains: [queryString.value.toLowerCase()] },
-    });
+const page = ref(0);
+const pageSize = 5;
+
+const data = useState<{
+  list: Pick<ParsedContent, string>[];
+  next: Pick<ParsedContent, string>[];
+}>("home-data", () => ({ list: [], next: [] }));
+
+const { pending, error } = await useAsyncData(
+  "home",
+  async (ctx) => {
+    page.value = 0;
+    const limit = pageSize + 1;
+    const { list, next } = await getBlogPosts(limit, queryString.value);
+    data.value = { list, next };
+  },
+  { watch: [queryString] }
+);
+
+watch([page], async () => {
+  const limit = pageSize + 1;
+  const skip = data.value?.list.length;
+
+  const { list, next } = await getBlogPosts(limit, queryString.value, skip);
+
+  if (data.value) {
+    data.value = {
+      list: [...data.value?.list, ...list],
+      next,
+    };
   }
-
-  if (skip) {
-    query = query.skip(skip);
-  }
-
-  const response = await query.find();
-
-  const list = response.slice(0, limit - 1);
-  const next = response.slice(limit - 1);
-
-  return { list, next };
-}
-
-const { data } = await useAsyncData("home", () => loadRecipes(11));
-
-async function loadMore() {
-  const limit = 10;
-  const skip = data.value.list.length + 1;
-  const { list, next } = await loadRecipes(limit, skip);
-
-  data.value.list.push(...[...data.value.next, ...list]);
-  data.value.next = next;
-}
-
-function refreshData() {
-  refreshNuxtData("home");
-}
+});
 </script>
