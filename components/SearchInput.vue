@@ -4,7 +4,7 @@
   >
     <input
       class="w-full rounded-md bg-transparent outline-none dark:text-white"
-      placeholder="Suche..."
+      placeholder="Search by title or for tags with #tag ... "
       v-model="text"
       @keypress.enter="submitSearch"
     />

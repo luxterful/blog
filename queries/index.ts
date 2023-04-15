@@ -23,8 +23,19 @@ export async function getBlogPosts(
   }
 
   if (search) {
+    const rx = /#[A-Za-z0-9_äÄöÖüÜß]+/g;
+    const searchText = search.toLowerCase();
+
+    const tags = searchText.match(rx)?.map((s) => s.slice(1));
+
+    const words = searchText
+      .split(rx)
+      .map((s) => s.trim())
+      .filter((s) => s !== "");
+
     query.where({
-      title_lowercase: { $contains: [search.toLowerCase()] },
+      title_lowercase: { $contains: words },
+      ...(tags ? { tags: { $in: tags } } : {}),
     });
   }
 

@@ -57,16 +57,24 @@ const data = useState<{
   next: Pick<ParsedContent, string>[];
 }>("home-data", () => ({ list: [], next: [] }));
 
+async function loadBlogPosts() {
+  page.value = 0;
+  const limit = pageSize + 1;
+  const { list, next } = await getBlogPosts(limit, queryString.value);
+  data.value = { list, next };
+}
+
 const { pending, error } = await useAsyncData(
   "home",
   async (ctx) => {
-    page.value = 0;
-    const limit = pageSize + 1;
-    const { list, next } = await getBlogPosts(limit, queryString.value);
-    data.value = { list, next };
+    if (ctx?.ssrContext) {
+      await loadBlogPosts();
+    }
   },
   { watch: [queryString] }
 );
+
+watch([queryString], async () => await loadBlogPosts());
 
 watch([page], async () => {
   const limit = pageSize + 1;
