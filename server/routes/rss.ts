@@ -3,7 +3,7 @@ import RSS from "rss";
 
 export default defineEventHandler(async (event) => {
   const feed = new RSS({
-    title: "title",
+    title: "LUXTER BLOG",
     feed_url: "https://blog.luxterful.eu/rss",
     site_url: "https://blog.luxterful.eu",
     language: "de",
