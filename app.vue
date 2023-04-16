@@ -1,6 +1,7 @@
 <template>
   <div class="mx-auto max-w-screen-md px-5">
     <NuxtLayout>
+      <NuxtLoadingIndicator />
       <NuxtPage />
     </NuxtLayout>
   </div>
