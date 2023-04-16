@@ -4,7 +4,7 @@
     <SearchInput class="mb-2" v-model="queryString" />
     <div class="flex flex-wrap" v-if="data">
       <NuxtLink
-        class="mb-4 w-full p-2 sm:w-1/2"
+        class="mt-4 w-full px-2"
         v-for="(article, idx) in data.list"
         :key="idx"
         :to="article.external ? article.canonical : article._path"
@@ -55,19 +55,20 @@ const pageSize = 5;
 const data = useState<{
   list: Pick<ParsedContent, string>[];
   next: Pick<ParsedContent, string>[];
-}>("home-data", () => ({ list: [], next: [] }));
+  loaded: boolean;
+}>("home-data", () => ({ list: [], next: [], loaded: false }));
 
 async function loadBlogPosts() {
   page.value = 0;
   const limit = pageSize + 1;
   const { list, next } = await getBlogPosts(limit, queryString.value);
-  data.value = { list, next };
+  data.value = { list, next, loaded: true };
 }
 
 const { pending, error } = await useAsyncData(
   "home",
   async (ctx) => {
-    if (ctx?.ssrContext) {
+    if (ctx?.ssrContext || !data.value.loaded) {
       await loadBlogPosts();
     }
   },
@@ -86,6 +87,7 @@ watch([page], async () => {
     data.value = {
       list: [...data.value?.list, ...list],
       next,
+      loaded: true,
     };
   }
 });

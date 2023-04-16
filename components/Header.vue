@@ -1,25 +1,32 @@
 <template>
-  <div class="flex justify-between items-stretch">
+  <div class="flex items-stretch justify-between">
     <div v-show="showHomeButton">
-      <NuxtLink to="/" class="h-full flex items-center">
+      <NuxtLink to="/" class="flex h-full items-center">
         <div
-          class="w-8 h-8 rounded-md hover:shadow-md shadow-sm flex justify-center items-center dark:text-white dark:bg-stone-700"
+          class="flex h-8 w-8 items-center justify-center rounded-md shadow-sm hover:shadow-md dark:bg-stone-700 dark:text-white"
         >
-          <IconHome class="w-5 h-5" />
+          <IconHome class="h-5 w-5" />
         </div>
       </NuxtLink>
     </div>
-    <div class="font-bold text-3xl m-3 text-center dark:text-white">
+    <div class="m-3 text-center text-3xl font-bold dark:text-white">
       <slot />
     </div>
     <div>
-      <div class="h-full flex items-center">
+      <div class="flex h-full items-center gap-1">
+        <a
+          href="/rss"
+          title="RSS Feed"
+          class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md shadow-sm hover:shadow-md dark:bg-stone-700 dark:fill-white dark:text-white"
+        >
+          <IconRss class="block h-5 w-5" />
+        </a>
         <div
-          class="cursor-pointer w-8 h-8 rounded-md shadow-sm hover:shadow-md flex justify-center items-center dark:fill-white dark:bg-stone-700"
+          class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md shadow-sm hover:shadow-md dark:bg-stone-700 dark:fill-white"
           @click="toggle"
         >
-          <IconSun class="w-5 h-5 block dark:hidden" />
-          <IconMoon class="w-5 h-5 hidden dark:block" />
+          <IconSun class="block h-5 w-5 dark:hidden" />
+          <IconMoon class="hidden h-5 w-5 dark:block" />
         </div>
       </div>
     </div>

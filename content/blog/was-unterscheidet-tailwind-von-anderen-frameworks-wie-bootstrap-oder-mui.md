@@ -5,13 +5,13 @@ tags:
 - tailwind
 - vue
 - mui
-external: true  
+external: false  
 canonical: https://blog.mayflower.de/
 ---  
 
-Front-End-CSS-Frameworks sind heute unverzichtbar für die Entwicklung moderner Webanwendungen. Sie helfen Entwicklern, ansprechende Designs zu erstellen. Drei der beliebtesten Frameworks sind Tailwind, Bootstrap und MUI. 
+Front-End-CSS-Frameworks sind heute unverzichtbar für die Entwicklung moderner Webanwendungen. Sie helfen Entwicklern, ansprechende Designs zu erstellen. Drei der beliebtesten Frameworks sind Tailwind, Bootstrap und MUI.
 
-Bootstrap, ursprünglich als "Twitter Bootstrap" bekannt, ist ein weit verbreitetes CSS Framework, das von Twitter entwickelt wurde. Es wurde erstmals 2011 veröffentlicht und ist somit das Älteste der drei Frameworks. 
+Bootstrap, ursprünglich als "Twitter Bootstrap" bekannt, ist ein weit verbreitetes CSS Framework, das von Twitter entwickelt wurde. Es wurde erstmals 2011 veröffentlicht und ist somit das Älteste der drei Frameworks.
 
 MUI (Material-UI) basiert auf der von Google entwickelten Material Design-Sprache, die ein flaches, minimalistisches Design, kräftige Farben und einfache Typografie betont.
 
@@ -22,7 +22,7 @@ Tailwind hat sich nach anfänglicher Skepsis von vielen Entwicklern in ein mittl
 Bootstrap ist bekannt für sein sauberes Erscheinungsbild, das auf einer Kombination von Gestaltungsprinzipien, vorgefertigten UI-Komponenten und einem responsiven Grid-System basiert. Aufgrund der weiten Verbreitung und der Verwendung von vorgefertigten Komponenten können Bootstrap-Websites ähnlich aussehen und wenig Raum für individuelle Designs bieten.
 
 Das nachfolgende Beispiel beschreibt eine Card-Komponente mit Bootstrap:
- 
+
 ``` html
 <div class="container mt-5">
   <div class="row">
@@ -44,6 +44,7 @@ Wie im Code-Beispiel erkennbar, benennen Bootstrap-CSS-Klassen das Styling oder 
 Bootstrap ist als eigenständiges CSS-Framework konzipiert. Es ist auf JavaScript angewiesen um komplexere Interaktionen zu ermöglichen. Für einfache Animationen wie z.B. das ein- und ausklappen einer Navbar kann jQuery und die dazugehörigen Bootstrap Plugins verwendet werden. Für aufwändige Anwendungen kommt beispielsweise React-Bootstrap zum Einsatz. Es kann den Entwicklungsprozess beschleunigen, indem es bereits mit Bootstrap gestylete React-Komponenten zur Verfügung stellt.
 
 ## MUI
+
 Neben den CSS-Klassen enthält dieses Framework auch bereits die Implementierung von React-Komponenten. Diese Komponenten besitzen Schnittstellen, die sogenannten Props. Mit Hilfe dieser Schnittstellen können verschiedene Varianten der Komponente erzeugt werden. Im Beispiel weiter unten werden z.B. mit `spacing={2}` die Abstände definiert oder mit `color="primary"` die Farbe des Buttons festgelegt.
 
 Um den Komponenten eigene Styles zu geben, die nicht den Standard MUI Styles entsprechen, muss mit zusätzlichen CSS Style Properties gearbeitet werden. Hier wird mit dem Property `sx` gearbeitet.
@@ -72,7 +73,7 @@ function Example() {
 }
 ```
 
-## Tailwind 
+## Tailwind
 
 Wie bereits erwähnt setzt Tailwind auf "Utility-Klassen". Diese umfassen spezifische "CSS-Eigenschaften" wie z.B. Abstände, Größen, Farben und Ausrichtungen. Man könnte sagen, Tailwind fügt zu normalem CSS eine weitere Abstraktionsebene hinzu, indem jedem CSS Property eine CSS Klasse gewidmet wird. Aus diesem Grund könnte man Tailwind auch eher in die Kategorie der Frontend-Tools (wie z.B. SASS) einordnen und weniger als "klassisches" Frontend-Framework.
 
@@ -98,8 +99,8 @@ Das nachfolgende Code Snippet ist ebenfalls das Pendant zum Card-Beispiel:
 
 ## Fazit
 
-Diese Ansätze von Bootstrap und MUI eignen sich gut für schnelle Entwicklungen und können ideal für Teams ohne eigene Designer sein. Andererseits können sie aber schnell dazu führen, dass sich das Erscheinungsbild der entwickelten Anwendung in den Einheitsbrei der Frameworks einreiht. 
+Diese Ansätze von Bootstrap und MUI eignen sich gut für schnelle Entwicklungen und können ideal für Teams ohne eigene Designer sein. Andererseits können sie aber schnell dazu führen, dass sich das Erscheinungsbild der entwickelten Anwendung in den Einheitsbrei der Frameworks einreiht.
 
 Tailwind hingegen bietet durch seinen Utility-First-Ansatz eine höhere Flexibilität und Kontrolle über das Design, was Entwicklern ermöglicht, individuellere und einzigartige Designs zu erstellen. Allerdings erfordert dieser Ansatz ein fundiertes Verständnis von CSS und möglicherweise zusätzlichen Gestaltungsaufwand.
 
-Die Wahl des geeigneten Front-End-Frameworks oder -Tools hängt letztendlich von den spezifischen Anforderungen, Präferenzen des Entwicklerteams und den Designzielen des Projekts ab. 
+Die Wahl des geeigneten Front-End-Frameworks oder -Tools hängt letztendlich von den spezifischen Anforderungen, Präferenzen des Entwicklerteams und den Designzielen des Projekts ab.
