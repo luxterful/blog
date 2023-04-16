@@ -31,7 +31,7 @@ useHead({
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",
   charset: "utf-8",
   meta: [
-    { name: "description", content: "Collection of our favourite recipes" },
+    { name: "description", content: "Tech Blog provided luxterful.eu" },
     {
       name: "theme-color",
       content: "white",

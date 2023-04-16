@@ -3,8 +3,10 @@ title: Was unterscheidet Tailwind von anderen Frameworks wie Bootstrap oder MUI
 date: 2023-04-14
 tags:   
 - tailwind
-- vue
+- bootstrap
 - mui
+- frontend
+- css
 external: false  
 canonical: https://blog.mayflower.de/
 ---  
