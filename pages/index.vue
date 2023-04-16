@@ -22,7 +22,7 @@
             {{ article.dateText && article.reading ? "&bull;" : null }}
             {{ article.reading }}
           </div>
-          <div class="flex gap-2 text-xs">
+          <div class="flex flex-wrap gap-2 text-xs">
             <span
               class="rounded-full bg-black px-2 py-1 text-white dark:bg-white dark:text-black"
               v-for="tag in article.tags"
