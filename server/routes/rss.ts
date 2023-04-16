@@ -11,10 +11,13 @@ export default defineEventHandler(async (event) => {
 
   const posts = await serverQueryContent(event, "blog").limit(15).find();
 
-  console.log(posts);
   for (const post of posts) {
     const title = post.title || "";
-    const url = "https://blog.luxterful.eu" + post._path;
+
+    const urlInternal = "https://blog.luxterful.eu" + post._path;
+    const urlExternal = post.canonical;
+
+    const url = post.external ? urlExternal : urlInternal;
     const date = post.date;
     feed.item({ title, description: title, url, date });
   }
