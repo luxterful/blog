@@ -30,7 +30,15 @@
             </span>
           </div>
 
-          <ContentRenderer class="dark:text-white" :value="doc" />
+          <ContentRenderer
+            v-if="!doc.external"
+            class="dark:text-white"
+            :value="doc"
+          />
+          <div v-else class="mt-5">
+            Article can be read here:
+            <a class="underline" :href="doc.canonical">{{ doc.canonical }}</a>
+          </div>
         </template>
       </ContentDoc>
     </div>
