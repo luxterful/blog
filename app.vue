@@ -16,7 +16,7 @@
       ><br /><br />
       Copyright {{ new Date().getFullYear() }}
       <a
-        href="https://luxterful.eu/legal"
+        href="https://www.luxterful.eu/legal"
         class="rounded-full bg-stone-300 px-2 py-1 text-white hover:bg-stone-400 dark:bg-stone-700 dark:text-stone-800 dark:hover:bg-stone-600"
       >
         legal notice

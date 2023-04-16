@@ -15,6 +15,13 @@
     <div>
       <div class="flex h-full items-center gap-1">
         <a
+          href="https://www.github.com/luxterful/blog"
+          title="Code on GitHub"
+          class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md shadow-sm hover:shadow-md dark:bg-stone-700 dark:fill-white dark:text-white"
+        >
+          <IconGithub class="block h-5 w-5" />
+        </a>
+        <a
           href="/rss"
           title="RSS Feed"
           class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md shadow-sm hover:shadow-md dark:bg-stone-700 dark:fill-white dark:text-white"
