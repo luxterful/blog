@@ -8,6 +8,7 @@
         v-for="(article, idx) in data.list"
         :key="idx"
         :to="article.external ? article.canonical : article._path"
+        :target="article.external ? '_blank' : '_self"
       >
         <div
           class="border-l border-black pb-2 pl-3 text-black dark:border-white dark:text-white hover:dark:bg-stone-900"
